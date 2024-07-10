@@ -1,0 +1,81 @@
+//     Mistake I was doing 
+// I was taking only one variable i for both a and B string 
+// And initializing i maximum of a and B length 
+// So suppose a lens will be 7 and B length will be 4 then I will be 7 
+// That's why in the first iteration b initial character was not coming in picture all though b fourth character should be added with 7th character of stringe a 
+// Here the example for more clarity 
+// index->     0 1 2 3 4 5 6 7
+// string A->  1 0 0 1 1 0 1 1 
+
+// index->           0 1 2 3 4 
+// string B->        1 0 1 0 1       
+// public class Solution {
+//     public String addBinary(String A, String B) {
+//     int Alen=A.length();
+//     int Blen = B.length();
+    
+//     int c=0;
+//     int i=0;
+//     if(Alen>=Blen){
+//       i  =Alen-1;
+//     } else{
+//         i=Blen-1;
+//     }
+//     StringBuilder answer = new StringBuilder();
+// int numOfA =0;
+//         int numOfB=0;
+//     while(i>=0||c==1){
+        
+//         if(i<Alen&&i>=0){
+//          numOfA = A.charAt(i)-'0';
+//         }else{ numOfA =0;}
+//          if(i<Blen&&i>=0){
+//          numOfB = B.charAt(i)-'0';
+//          }else{ numOfB =0;}
+//         int ans = numOfA+numOfB+c;
+//         c = ans / 2;
+//        answer.insert(0,ans%2);
+//         i--;
+        
+//     }
+//     return answer.toString();
+//     }
+//     }
+
+
+Here is the improved code
+class Solution {
+    public String addBinary(String A, String B) {
+    int Alen=A.length();
+    int Blen = B.length();
+    
+    int c=0;
+    int i=0;
+    
+        i  =Alen-1;
+    
+        int j=Blen-1;
+   
+    StringBuilder answer = new StringBuilder();
+int numOfA =0;
+        int numOfB=0;
+    while(i>=0||c==1||j>=0){
+        
+        if(i<Alen&&i>=0){
+         numOfA = A.charAt(i)-'0';
+        }else{ numOfA =0;}
+         if(j<Blen&&j>=0){
+         numOfB = B.charAt(j)-'0';
+         }else{ numOfB =0;}
+        int ans = numOfA+numOfB+c;
+        c = ans / 2;
+       answer.insert(0,ans%2);
+        i--;
+        j--;
+        
+    }
+    return answer.toString();
+
+ 
+    }
+    }
